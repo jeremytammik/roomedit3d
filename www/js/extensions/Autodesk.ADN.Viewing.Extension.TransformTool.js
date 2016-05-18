@@ -70,16 +70,13 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
     // on camera changed
     function onCameraChanged() {
-
       if(_transformControlTx) {
-
         _transformControlTx.update();
       }
     }
 
     // item selected callback
     function onSelectionChanged(event) {
-
       var dbId = event.dbIdArray[0];
 
       if(dbId) {
@@ -92,7 +89,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     }
 
     function onAggregateSelectionChanged(event) {
-
       var fragIdsArray = [];
 
       if(event.selections && event.selections.length) {
@@ -109,11 +105,8 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       // component unselected
 
       if(!fragIdsArray.length) {
-
         _hitPoint = null;
-
         _externalId = null;
-
         _transformControlTx.visible = false;
 
         _transformControlTx.removeEventListener(
@@ -134,9 +127,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
         _selectedFragProxyMap = {};
 
         _transformControlTx.visible = true;
-
         _transformControlTx.setPosition(_hitPoint);
-
         _transformControlTx.addEventListener(
           'change', onTxChange);
 
@@ -305,7 +296,8 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
       _hitPoint = getHitPoint(event);
 
-      console.log( 'button down: ' + pointString(_hitPoint) );
+      console.log( 'button down: ' );
+      console.log(_hitPoint);
 
       _isDragging = true;
 
@@ -327,10 +319,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
         console.log( 'button up: external id '
           + _externalId + ' offset by '
           + pointString( offset ) );
-
-        //var io = require('socket.io')(server);
-
-        //socket.emit('roomedit3d', { translation : offset } );
 
         var data = {
           externalId : _externalId,
@@ -356,12 +344,9 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     this.handleMouseMove = function(event) {
 
       if (_isDragging) {
-
         if (_transformControlTx.onPointerMove(event) ) {
-
           return true;
         }
-
         return false;
       }
 
@@ -396,7 +381,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     _self.tool = new TransformTool();
 
     viewer.toolController.registerTool(_self.tool);
-
     viewer.toolController.activateTool(_self.tool.getName());
 
     console.log('Autodesk.ADN.Viewing.Extension.TransformTool loaded');

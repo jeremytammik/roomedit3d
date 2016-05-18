@@ -9,6 +9,7 @@ module.exports = function() {
       req.body.externalId; // external id == Revit UniqueId
       req.body.offset; // THREE.Vector3 offset x y z
       //socket.emit
+      return res.send();
     });
 
     // implement a GET for the current transform?
