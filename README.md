@@ -1,6 +1,6 @@
 # Roomedit3d
 
-View and Data API extension to move furniture family instances and update the Revit BIM.
+View and Data API extension to move furniture family instances and update the Revit BIM in real-time using [socket.io](http://socket.io).
 
 Based on the [boilerplate project for View & Data API using a node server](https://github.com/leefsmp/view.and.data-boilerplate).
 
