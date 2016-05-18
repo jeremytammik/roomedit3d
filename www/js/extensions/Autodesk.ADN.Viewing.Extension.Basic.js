@@ -33,4 +33,3 @@ Autodesk.ADN.Viewing.Extension.Basic.prototype.constructor =
 Autodesk.Viewing.theExtensionManager.registerExtension(
     'Autodesk.ADN.Viewing.Extension.Basic',
     Autodesk.ADN.Viewing.Extension.Basic);
-

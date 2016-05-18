@@ -1,5 +1,6 @@
 // roomedit3d/server.js
 
+var pkg = require( './package.json' );
 var lmvConfig = require('./config/config-view-and-data');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -33,6 +34,13 @@ app.use('/api/roomedit3d', roomedit3dapi());
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
-  console.log('Server listening on: ' + server.address());
-});
+var server = app.listen(
+  app.get( 'port' ),
+  function() {
+    var a = server.address().port;
+    console.log(
+      'Roomedit3d server ' + pkg.version
+      + ' listening at port ' + a + '.'
+    );
+  }
+);

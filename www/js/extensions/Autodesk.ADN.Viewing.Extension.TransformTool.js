@@ -11,7 +11,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     var _hitPoint = null;
     var _isDragging = false;
     var _transformMesh = null;
-    var _modifiedFragIdMap = {};
     var _selectedFragProxyMap = {};
     var _transformControlTx = null;
 
@@ -67,6 +66,14 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
     // item selected callback
     function onSelectionChanged(event) {
+
+      var dbId = event.dbIdArray[0];
+
+      if(dbId) {
+        viewer.getProperties(dbId, function(result){
+          console.log(result);
+        });
+      }
       handleSelectionChanged(event.fragIdsArray);
     }
 
@@ -135,8 +142,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
           fragProxy.offset = offset;
 
           _selectedFragProxyMap[fragId] = fragProxy;
-
-          _modifiedFragIdMap[fragId] = {};
         });
 
         _hitPoint = null;
@@ -170,29 +175,6 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
       return hitPoint;
     }
-
-    // returns all transformed meshes
-    this.getTransformMap = function() {
-
-      var transformMap = {};
-
-      for(var fragId in _modifiedFragIdMap){
-
-        var fragProxy = viewer.impl.getFragmentProxy(
-          viewer.model,
-          fragId);
-
-        fragProxy.getAnimTransform();
-
-        transformMap[fragId] = {
-          position: fragProxy.position
-        };
-
-        fragProxy = null;
-      }
-
-      return transformMap;
-    };
 
     this.getNames = function() {
       return ['Autodesk.ADN.Viewing.Extension.TransformTool'];
@@ -314,6 +296,9 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     };
 
     this.handleButtonUp = function(event, button) {
+      if(_isDragging /*and something changed*/) {
+        // POST the changes
+      }
       _isDragging = false;
 
       if (_transformControlTx.onPointerUp(event))

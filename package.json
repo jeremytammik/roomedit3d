@@ -1,6 +1,6 @@
 {
   "name": "roomedit3d",
-  "description": "A basic node.js server and View and Data API client",
+  "description": "Roomedit3d node.js server and View and Data API client",
   "version": "1.0.0",
   "dependencies": {
     "body-parser": "^1.15.0",

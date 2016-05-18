@@ -2,7 +2,7 @@
 
 View and Data API extension to move furniture family instances and update the Revit BIM.
 
-Based on the [basic boilerplate project for View & Data API using a node server](https://github.com/leefsmp/view.and.data-boilerplate).
+Based on the [boilerplate project for View & Data API using a node server](https://github.com/leefsmp/view.and.data-boilerplate).
 
 
 ## Author

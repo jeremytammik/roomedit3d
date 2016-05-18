@@ -1,41 +1,18 @@
-//////////////////////////////////////////////////////////////////////////
-// Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Philippe Leefsma 2014 - ADN/Developer Technical Services
-//
-// Permission to use, copy, modify, and distribute this software in
-// object code form for any purpose and without fee is hereby granted,
-// provided that the above copyright notice appears in all copies and
-// that both that copyright notice and the limited warranty and
-// restricted rights notice below appear in all supporting
-// documentation.
-//
-// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
-// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
-// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
-// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
-// UNINTERRUPTED OR ERROR FREE.
-//////////////////////////////////////////////////////////////////////////
+// roomedit3d/www/js/viewer.js
 
-//////////////////////////////////////////////////////////////////////////
-// Get token from our API URL.
+// Get token from our REST API URL.
 // Current View & Data API requires a synchronous method
-//
-//////////////////////////////////////////////////////////////////////////
-var getToken = function () {
 
+var getToken = function () {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", '/api/token', false);
   xhr.send(null);
-
   var response = JSON.parse(xhr.responseText);
-
   return response.access_token;
 };
 
-//////////////////////////////////////////////////////////////////////////
-// on html document loaded
-//
-//////////////////////////////////////////////////////////////////////////
+// On html document loaded
+
 function onload() {
 
   //Tip: use http://models.autodesk.io to quickly upload models'
@@ -66,15 +43,12 @@ function onload() {
   };
 
   Autodesk.Viewing.Initializer(options, function () {
-
     initializeViewer('viewer', 'urn:' + options.urn);
   });
 }
 
-//////////////////////////////////////////////////////////////////////////
 // Initialize viewer and load model
-//
-//////////////////////////////////////////////////////////////////////////
+
 function initializeViewer(containerId, urn) {
 
   Autodesk.Viewing.Document.load(urn, function (model) {
@@ -109,14 +83,12 @@ function initializeViewer(containerId, urn) {
     var loadBtn = document.getElementById('loadBtn');
 
     loadBtn.addEventListener("click", function(){
-
       loadExtension(viewer);
     });
 
     var unloadBtn = document.getElementById('unloadBtn');
 
     unloadBtn.addEventListener("click", function(){
-
       unloadExtension(viewer);
     });
 
@@ -148,10 +120,9 @@ function initializeViewer(containerId, urn) {
   });
 }
 
-//////////////////////////////////////////////////////////////////////////
+
 // Model Geometry loaded callback
-//
-//////////////////////////////////////////////////////////////////////////
+
 function onGeometryLoaded(event) {
 
   var viewer = event.target;
@@ -163,10 +134,8 @@ function onGeometryLoaded(event) {
   //alert('Geometry Loaded!');
 }
 
-//////////////////////////////////////////////////////////////////////////
 // Load custom extension
-//
-//////////////////////////////////////////////////////////////////////////
+
 function loadExtension(viewer) {
 
   var options = {};
@@ -176,20 +145,16 @@ function loadExtension(viewer) {
     options);
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Load custom extension
-//
-//////////////////////////////////////////////////////////////////////////
+// Unload custom extension
+
 function unloadExtension(viewer) {
 
   var res = viewer.unloadExtension(
     'Autodesk.ADN.Viewing.Extension.TransformTool');
 }
 
-//////////////////////////////////////////////////////////////////////////
 // Log viewer errors with more explicit message
-//
-//////////////////////////////////////////////////////////////////////////
+
 function logError(err) {
 
   switch(err){

@@ -1,42 +1,20 @@
-<!--/////////////////////////////////////////////////////////////////////////////////
-// Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Philippe Leefsma 2014 - ADN/Developer Technical Services
-//
-// Permission to use, copy, modify, and distribute this software in
-// object code form for any purpose and without fee is hereby granted,
-// provided that the above copyright notice appears in all copies and
-// that both that copyright notice and the limited warranty and
-// restricted rights notice below appear in all supporting
-// documentation.
-//
-// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
-// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
-// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
-// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
-// UNINTERRUPTED OR ERROR FREE.
-////////////////////////////////////////////////////////////////////////////////-->
 <html>
 <head>
-    <title>ADN Viewer Boilerplate</title>
-    <link type="text/css" rel="stylesheet" href="https://autodeskviewer.com/viewers/2.5/style.min.css"/>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
-    <link type="text/css" rel="stylesheet" href="css/app.css"/>
+  <title>Roomedit3d &ndash; Real-time BIM Update from View and Data API</title>
+  <link type="text/css" rel="stylesheet" href="https://autodeskviewer.com/viewers/2.5/style.min.css"/>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+  <link type="text/css" rel="stylesheet" href="css/app.css"/>
 </head>
 
 <body onload="onload()">
 
-  <button id="loadBtn" class="extension-load-btn">
-      Load Extension
-  </button>
+  <button id="loadBtn" class="extension-load-btn">Start Roomedit3d</button>
+  <button id="unloadBtn" class="extension-unload-btn">Update BIM</button>
 
-  <button id="unloadBtn" class="extension-unload-btn">
-      Unload Extension
-  </button>
-
-	<div id="viewer"> </div>
+	<div id="viewer"></div>
 
   <script src="https://autodeskviewer.com/viewers/2.5/viewer3D.min.js"></script>
-  <script src="js/extensions/Autodesk.ADN.Viewing.Extension.Basic.js"></script>
+  <!-- <script src="js/extensions/Autodesk.ADN.Viewing.Extension.Basic.js"></script> -->
   <script src="js/extensions/Autodesk.ADN.Viewing.Extension.TransformTool.js"></script>
   <script src="js/viewer.js"></script>
 
