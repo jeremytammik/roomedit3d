@@ -1,14 +1,14 @@
 var express = require('express');
 
-module.exports = function(lmv) {
+module.exports = function() {
 
     var router = express.Router();
 
     router.post('/transform', function (req, res) {
-      console.log(req);
-      req.body.externalId; // external id and three.vector3 offset x y z
-      req.body.offset; // external id and three.vector3 offset x y z
-      socket.emit
+      console.log(req.body);
+      req.body.externalId; // external id == Revit UniqueId
+      req.body.offset; // THREE.Vector3 offset x y z
+      //socket.emit
     });
 
     // implement a GET for the current transform?

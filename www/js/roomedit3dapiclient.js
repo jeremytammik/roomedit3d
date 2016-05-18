@@ -1,7 +1,8 @@
 
 var Roomedit3dApiClient = function(args) {
 
-  var _apiUrl = args.baseUrl + ':' + args.port;
+  //var _apiUrl = args.baseUrl + ':' + args.port;
+  var _apiUrl = args.baseUrl;
 
   this.postTransform = function(data) {
     return fetch(_apiUrl + '/transform', {

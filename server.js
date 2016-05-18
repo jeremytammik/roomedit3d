@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var Lmv = require('view-and-data');
 var express = require('express');
+var tokenapi = require('./routes/api/token');
 var roomedit3dapi = require('./routes/api/roomedit3d');
 
 var app = express();
@@ -23,8 +24,7 @@ var lmv = new Lmv(lmvConfig);
 
 lmv.initialize().then(
   function() {
-    app.use('/api/token',
-      require('./routes/api/token')(lmv));
+    app.use('/api/token',tokenapi(lmv));
   }, function(error) {
     console.log(error);
   }
