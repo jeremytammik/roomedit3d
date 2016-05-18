@@ -9,7 +9,8 @@
     "request": ">= 2.55.0",
     "serve-favicon": ">= 2.2.0",
     "socket.io": "^1.4.6",
-    "view-and-data": "^1.0.7"
+    "view-and-data": "^1.0.7",
+    "whatwg-fetch": "^1.0.0"
   },
   "engines": {
     "node": ">= 0.10.0"

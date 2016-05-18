@@ -5,7 +5,10 @@ module.exports = function(lmv) {
     var router = express.Router();
 
     router.post('/transform', function (req, res) {
-      console.log(req)
+      console.log(req);
+      req.body.externalId; // external id and three.vector3 offset x y z
+      req.body.offset; // external id and three.vector3 offset x y z
+      socket.emit
     });
 
     // implement a GET for the current transform?
@@ -18,4 +21,4 @@ module.exports = function(lmv) {
 
 // in the browser, the extension calls POST server/api/roomedit3d/transform
 // Revit add-in calls GET server/api/roomedit3d/transform
-// better: Revit add-in connects with socket
+// better: Revit add-in connects with socket.io

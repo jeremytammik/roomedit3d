@@ -16,7 +16,7 @@ var getToken = function () {
 function onload() {
 
   //Tip: use http://models.autodesk.io to quickly upload models'
-  var urn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YmFyY2Vsb25hL3Jvb21lZGl0M2QucnZ0'; // Roomedit3d.rvt
+  var urn = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YmFyY2Vsb25hMi9yb29tZWRpdDNkLnJ2dA=='; // Roomedit3d.rvt
 
   //List of Supported Languages:
   // Chinese Simplified: zh-cn
@@ -138,7 +138,12 @@ function onGeometryLoaded(event) {
 
 function loadExtension(viewer) {
 
-  var options = {};
+  var options = {
+    roomedit3dApi : new Roomedit3dApiClient({
+      baseUrl : '/api/roomedit3d',
+      port : 3000
+    })
+  };
 
   var res = viewer.loadExtension(
     'Autodesk.ADN.Viewing.Extension.TransformTool',

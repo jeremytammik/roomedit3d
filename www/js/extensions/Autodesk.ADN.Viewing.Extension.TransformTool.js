@@ -2,6 +2,17 @@
 //
 // Transform Tool viewer extension by Philippe Leefsma, August 2015
 
+function realString( a ) {
+  return a.toFixed( 2 );
+}
+
+function pointString( p ) {
+  return '('
+    + realString( p.x ) + ','
+    + realString( p.y ) + ','
+    + realString( p.z ) + ')';
+}
+
 AutodeskNamespace("Autodesk.ADN.Viewing.Extension");
 
 Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
@@ -117,7 +128,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
       if(_hitPoint) {
 
-        _initialHitPoint = new THREE.Vector(
+        _initialHitPoint = new THREE.Vector3(
           _hitPoint.x, _hitPoint.y, _hitPoint.z );
 
         _selectedFragProxyMap = {};
@@ -307,24 +318,25 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     this.handleButtonUp = function(event, button) {
 
       if( _isDragging && _externalId && _initialHitPoint ) {
-        
-        _hitPoint = getHitPoint(event);
 
-        var offset1 = {
-          x: _hitPoint.x - _initialHitPoint.x,
-          y: _hitPoint.y - _initialHitPoint.y,
-          z: _hitPoint.z - _initialHitPoint.z
-        };
-
-        console.log( offset1 );
+        //console.log( _hitPoint );
 
         var offset = _hitPoint.sub( _initialHitPoint );
 
-        console.log( offset );
+        console.log( 'button up: external id '
+          + _externalId + ' offset by '
+          + pointString( offset ) );
 
         //var io = require('socket.io')(server);
 
-        socket.emit('roomedit3d', { translation : offset } );
+        //socket.emit('roomedit3d', { translation : offset } );
+
+        var data = {
+          externalId : _externalId,
+          offset : offset
+        }
+
+        options.roomedit3dApi.postTransform(data);
 
         _hitPoint = null;
         _externalId = null;

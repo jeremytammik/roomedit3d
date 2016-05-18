@@ -4,6 +4,17 @@ View and Data API extension to move furniture family instances and update the Re
 
 Based on the [boilerplate project for View & Data API using a node server](https://github.com/leefsmp/view.and.data-boilerplate).
 
+A Revit BIM model is translated for and displayed to the user by the
+[Forge](http://forge.autodesk.com)
+[View and Data API](https://developer.autodesk.com/api/view-and-data-api).
+
+A View and Data API extension client app enables user interaction to move selected elements around on screen.
+
+The updated elements and their new locations are transferred to the [node.js](https://nodejs.org) server via a REST API call.
+
+The server uses [socket.io](http://socket.io) to broadcast the updates.
+
+This broadcast is picked up by a yet-to-be-implemented C# .NET Revit add-in client.
 
 ## Author
 
