@@ -9,10 +9,12 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
   function TransformTool() {
 
     var _hitPoint = null;
+    var _initialHitPoint = null;
     var _isDragging = false;
     var _transformMesh = null;
     var _selectedFragProxyMap = {};
     var _transformControlTx = null;
+    var _externalId = null;
 
     // Creates a dummy mesh to attach control to
 
@@ -71,13 +73,15 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
       if(dbId) {
         viewer.getProperties(dbId, function(result){
-          console.log(result);
+          //console.log(result);
+          _externalId = result.externalId;
         });
       }
       handleSelectionChanged(event.fragIdsArray);
     }
 
     function onAggregateSelectionChanged(event) {
+
       var fragIdsArray = [];
 
       if(event.selections && event.selections.length) {
@@ -97,6 +101,8 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
         _hitPoint = null;
 
+        _externalId = null;
+
         _transformControlTx.visible = false;
 
         _transformControlTx.removeEventListener(
@@ -110,6 +116,9 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       }
 
       if(_hitPoint) {
+
+        _initialHitPoint = new THREE.Vector(
+          _hitPoint.x, _hitPoint.y, _hitPoint.z );
 
         _selectedFragProxyMap = {};
 
@@ -296,9 +305,32 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     };
 
     this.handleButtonUp = function(event, button) {
-      if(_isDragging /*and something changed*/) {
-        // POST the changes
+
+      if( _isDragging && _externalId && _initialHitPoint ) {
+        
+        _hitPoint = getHitPoint(event);
+
+        var offset1 = {
+          x: _hitPoint.x - _initialHitPoint.x,
+          y: _hitPoint.y - _initialHitPoint.y,
+          z: _hitPoint.z - _initialHitPoint.z
+        };
+
+        console.log( offset1 );
+
+        var offset = _hitPoint.sub( _initialHitPoint );
+
+        console.log( offset );
+
+        //var io = require('socket.io')(server);
+
+        socket.emit('roomedit3d', { translation : offset } );
+
+        _hitPoint = null;
+        _externalId = null;
+        _initialHitPoint = null;
       }
+
       _isDragging = false;
 
       if (_transformControlTx.onPointerUp(event))

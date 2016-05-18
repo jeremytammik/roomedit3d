@@ -44,3 +44,9 @@ var server = app.listen(
     );
   }
 );
+
+var io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+  socket.emit('roomedit3d', { hello: 'world' });
+});
