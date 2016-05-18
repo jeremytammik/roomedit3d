@@ -16,7 +16,7 @@ The server uses [socket.io](http://socket.io) to broadcast the updates.
 
 This broadcast is picked up by a yet-to-be-implemented C# .NET Revit add-in client.
 
-Hardwired for a specific model; the selected element is identified via its Revit UniqueId.
+Currently hardwired for a specific model; the selected element is identified via its Revit UniqueId.
 
 ## Author
 
