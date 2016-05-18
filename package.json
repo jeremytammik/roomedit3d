@@ -1,0 +1,28 @@
+{
+  "name": "roomedit3d",
+  "description": "A basic node.js server and View and Data API client",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": ">= 4.12.3",
+    "request": ">= 2.55.0",
+    "serve-favicon": ">= 2.2.0",
+    "view-and-data": "^1.0.7"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "contributors": [
+    "Philippe Leefsma <philippe.leefsma@autodesk.com>",
+    "Jeremy Tammik <jeremy.tammik@eur.autodesk.com>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Developer-Autodesk/view.and.data.api-boilerplate.git"
+  }
+}

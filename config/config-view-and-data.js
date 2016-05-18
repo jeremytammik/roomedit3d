@@ -1,0 +1,13 @@
+/////////////////////////////////////////////////////////////////////
+// Server config file for view-and-data package
+//
+/////////////////////////////////////////////////////////////////////
+
+module.exports = {
+
+  credentials: {
+
+    ConsumerKey: process.env.ROOMEDIT3D_CONSUMERKEY,
+    ConsumerSecret: process.env.ROOMEDIT3D_CONSUMERSECRET
+  }
+}

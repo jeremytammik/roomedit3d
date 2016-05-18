@@ -1,0 +1,27 @@
+
+body{
+    margin:0;
+}
+
+.extension-load-btn {
+
+    position: absolute;
+    width: 110px;
+    left: 10px;
+    top: 10px;
+    z-index: 3;
+    border-radius: 5px;
+    background-color: green;
+    color: whitesmoke;
+}
+
+.extension-unload-btn {
+    position: absolute;
+    width: 110px;
+    left: 10px;
+    top: 40px;
+    z-index: 3;
+    border-radius: 5px;
+    background-color: red;
+    color: whitesmoke;
+}
