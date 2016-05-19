@@ -15,6 +15,10 @@ function pointString( p ) {
     + realString( p.z ) + ')';
 }
 
+function subtract_point( p, q ) {
+  return { x : p.x - q.x, y : p.y - q.y, z : p.z - q.z };
+}
+
 AutodeskNamespace("Autodesk.ADN.Viewing.Extension");
 
 Roomedit3dTranslationTool = function (viewer, options) {
@@ -110,6 +114,9 @@ Roomedit3dTranslationTool = function (viewer, options) {
       // component unselected
 
       if(!fragIdsArray.length) {
+
+        //this.postTransform('unselected');
+
         _hitPoint = null;
         _externalId = null;
         _transformControlTx.visible = false;
@@ -239,6 +246,8 @@ Roomedit3dTranslationTool = function (viewer, options) {
     // deactivate tool
     this.deactivate = function() {
 
+      //this.postTransform('deactivate');
+
       viewer.impl.removeOverlay(
         roomedit3d_toolname,
         _transformControlTx);
@@ -317,11 +326,14 @@ Roomedit3dTranslationTool = function (viewer, options) {
     this.handleButtonUp = function(event, button) {
 
       if( _isDirty && _externalId && _initialHitPoint ) {
+        var offset = subtract_point(
+          _transformControlTx.position,
+          _initialHitPoint );
 
-        var offset = {
-          x:_transformControlTx.position.x - _initialHitPoint.x,
-          y:_transformControlTx.position.y - _initialHitPoint.y,
-          z:_transformControlTx.position.z - _initialHitPoint.z };
+        _initialHitPoint = new THREE.Vector3(
+          _transformControlTx.position.x,
+          _transformControlTx.position.y,
+          _transformControlTx.position.z );
 
         console.log( 'button up: external id '
           + _externalId + ' offset by '
@@ -333,10 +345,11 @@ Roomedit3dTranslationTool = function (viewer, options) {
         }
 
         options.roomedit3dApi.postTransform(data);
+
+        _isDirty = false;
       }
 
       _isDragging = false;
-      _isDirty = false;
 
       if (_transformControlTx.onPointerUp(event))
         return true;
@@ -371,6 +384,25 @@ Roomedit3dTranslationTool = function (viewer, options) {
 
     this.handleResize = function() {
     };
+
+    //this.postTransform = function( s ) {
+    //  var offset = subtract_point(
+    //    _transformControlTx.position,
+    //    _initialHitPoint );
+
+    //  console.log( s + ': external id '
+    //    + _externalId + ' offset by '
+    //    + pointString( offset ) );
+
+    //  var data = {
+    //    externalId : _externalId,
+    //    offset : offset
+    //  }
+
+    //  options.roomedit3dApi.postTransform(data);
+
+    //  _isDirty = false;
+    //}
   }
 
   Autodesk.Viewing.Extension.call(this, viewer, options);
