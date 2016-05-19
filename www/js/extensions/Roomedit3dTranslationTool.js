@@ -318,10 +318,10 @@ Roomedit3dTranslationTool = function (viewer, options) {
 
       if( _isDirty && _externalId && _initialHitPoint ) {
 
-        //console.log( _hitPoint );
-
-        //var offset = _hitPoint.sub( _initialHitPoint );
-        var offset = _transformControlTx.position.sub( _initialHitPoint );
+        var offset = {
+          x:_transformControlTx.position.x - _initialHitPoint.x,
+          y:_transformControlTx.position.y - _initialHitPoint.y,
+          z:_transformControlTx.position.z - _initialHitPoint.z };
 
         console.log( 'button up: external id '
           + _externalId + ' offset by '
@@ -333,11 +333,6 @@ Roomedit3dTranslationTool = function (viewer, options) {
         }
 
         options.roomedit3dApi.postTransform(data);
-
-        //_hitPoint = null;
-        //_externalId = null;
-        //_initialHitPoint = null;
-        //_initialHitPoint = _transformControlTx.position;
       }
 
       _isDragging = false;
