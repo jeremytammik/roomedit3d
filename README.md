@@ -40,7 +40,7 @@ This sample demonstrates an interactive modification of the three.js graphics pr
 
 In this case, the source desktop CAD model is a Revit BIM, and the modifications applied are furniture family instance translations.
 
-The viewer client in the browser uses [fetch](https://github.com/github/fetch) to implement a REST API POST call back to the node.js server.
+The viewer client in the browser uses [fetch](https://github.com/github/fetch) to implement a REST API POST call to communicate the modified element external id and translation back to the node.js server.
 
 The node.js server uses a [socket.io](http://socket.io) broadcast to notify the desktop of the changes.
 
