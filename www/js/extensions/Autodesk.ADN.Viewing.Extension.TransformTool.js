@@ -22,6 +22,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     var _hitPoint = null;
     var _initialHitPoint = null;
     var _isDragging = false;
+    var _isDirty = false;
     var _transformMesh = null;
     var _selectedFragProxyMap = {};
     var _transformControlTx = null;
@@ -50,6 +51,8 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
     // on translation change
     function onTxChange() {
+
+      _isDirty = true;
 
       for(var fragId in _selectedFragProxyMap) {
 
@@ -300,6 +303,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       console.log(_hitPoint);
 
       _isDragging = true;
+      _isDirty = false;
 
       if (_transformControlTx.onPointerDown(event))
         return true;
@@ -310,11 +314,12 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
     this.handleButtonUp = function(event, button) {
 
-      if( _isDragging && _externalId && _initialHitPoint ) {
+      if( _isDirty && _externalId && _initialHitPoint ) {
 
-        console.log( _hitPoint );
+        //console.log( _hitPoint );
 
-        var offset = _hitPoint.sub( _initialHitPoint );
+        //var offset = _hitPoint.sub( _initialHitPoint );
+        var offset = _transformControlTx.position.sub( _initialHitPoint );
 
         console.log( 'button up: external id '
           + _externalId + ' offset by '
@@ -333,6 +338,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       }
 
       _isDragging = false;
+      _isDirty = false;
 
       if (_transformControlTx.onPointerUp(event))
         return true;
