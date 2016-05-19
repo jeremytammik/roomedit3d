@@ -334,9 +334,10 @@ Roomedit3dTranslationTool = function (viewer, options) {
 
         options.roomedit3dApi.postTransform(data);
 
-        _hitPoint = null;
-        _externalId = null;
-        _initialHitPoint = null;
+        //_hitPoint = null;
+        //_externalId = null;
+        //_initialHitPoint = null;
+        //_initialHitPoint = _transformControlTx.position;
       }
 
       _isDragging = false;
