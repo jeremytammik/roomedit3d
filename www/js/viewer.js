@@ -136,6 +136,8 @@ function onGeometryLoaded(event) {
 
 // Load custom extension
 
+var toolname = new Roomedit3dTranslationTool()
+
 function loadExtension(viewer) {
 
   var options = {
@@ -146,16 +148,15 @@ function loadExtension(viewer) {
   };
 
   var res = viewer.loadExtension(
-    'Autodesk.ADN.Viewing.Extension.TransformTool',
+    roomedit3d_toolname,
     options);
 }
 
 // Unload custom extension
 
 function unloadExtension(viewer) {
-
   var res = viewer.unloadExtension(
-    'Autodesk.ADN.Viewing.Extension.TransformTool');
+    roomedit3d_toolname );
 }
 
 // Log viewer errors with more explicit message

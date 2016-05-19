@@ -1,6 +1,8 @@
-// roomedit3d/www/js/extensions/Autodesk.ADN.Viewing.Extension.TransformTool.js
+// roomedit3d/www/js/extensions/Roomedit3dTranslationTool.js
 //
 // Transform Tool viewer extension by Philippe Leefsma, August 2015
+
+var roomedit3d_toolname = 'Roomedit3dTranslationTool';
 
 function realString( a ) {
   return a.toFixed( 2 );
@@ -15,7 +17,7 @@ function pointString( p ) {
 
 AutodeskNamespace("Autodesk.ADN.Viewing.Extension");
 
-Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
+Roomedit3dTranslationTool = function (viewer, options) {
 
   function TransformTool() {
 
@@ -190,11 +192,11 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     }
 
     this.getNames = function() {
-      return ['Autodesk.ADN.Viewing.Extension.TransformTool'];
+      return [roomedit3d_toolname];
     };
 
     this.getName = function() {
-      return 'Autodesk.ADN.Viewing.Extension.TransformTool';
+      return roomedit3d_toolname;
     };
 
     // activates tool
@@ -205,7 +207,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       var bbox = viewer.model.getBoundingBox();
 
       viewer.impl.createOverlayScene(
-        'Autodesk.ADN.Viewing.Extension.TransformTool');
+        roomedit3d_toolname);
 
       _transformControlTx = new THREE.TransformControls(
         viewer.impl.camera,
@@ -218,7 +220,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       _transformControlTx.visible = false;
 
       viewer.impl.addOverlay(
-        'Autodesk.ADN.Viewing.Extension.TransformTool',
+        roomedit3d_toolname,
         _transformControlTx);
 
       _transformMesh = createTransformMesh();
@@ -238,7 +240,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     this.deactivate = function() {
 
       viewer.impl.removeOverlay(
-        'Autodesk.ADN.Viewing.Extension.TransformTool',
+        roomedit3d_toolname,
         _transformControlTx);
 
       _transformControlTx.removeEventListener(
@@ -248,7 +250,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
       _transformControlTx = null;
 
       viewer.impl.removeOverlayScene(
-        'Autodesk.ADN.Viewing.Extension.TransformTool');
+        roomedit3d_toolname);
 
       viewer.removeEventListener(
         Autodesk.Viewing.CAMERA_CHANGE_EVENT,
@@ -389,7 +391,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
     viewer.toolController.registerTool(_self.tool);
     viewer.toolController.activateTool(_self.tool.getName());
 
-    console.log('Autodesk.ADN.Viewing.Extension.TransformTool loaded');
+    console.log('Roomedit3dTranslationTool loaded');
 
     return true;
   };
@@ -399,7 +401,7 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
 
     viewer.toolController.deactivateTool(_self.tool.getName());
 
-    console.log('Autodesk.ADN.Viewing.Extension.TransformTool unloaded');
+    console.log('Roomedit3dTranslationTool unloaded');
 
     return true;
   };
@@ -421,12 +423,12 @@ Autodesk.ADN.Viewing.Extension.TransformTool = function (viewer, options) {
   };
 };
 
-Autodesk.ADN.Viewing.Extension.TransformTool.prototype =
+Roomedit3dTranslationTool.prototype =
   Object.create(Autodesk.Viewing.Extension.prototype);
 
-Autodesk.ADN.Viewing.Extension.TransformTool.prototype.constructor =
-  Autodesk.ADN.Viewing.Extension.TransformTool;
+Roomedit3dTranslationTool.prototype.constructor =
+  Roomedit3dTranslationTool;
 
 Autodesk.Viewing.theExtensionManager.registerExtension(
-  'Autodesk.ADN.Viewing.Extension.TransformTool',
-  Autodesk.ADN.Viewing.Extension.TransformTool);
+  roomedit3d_toolname,
+  Roomedit3dTranslationTool);
