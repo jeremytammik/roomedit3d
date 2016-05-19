@@ -7,10 +7,11 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var Lmv = require('view-and-data');
 var express = require('express');
-var tokenapi = require('./routes/api/token');
-var roomedit3dapi = require('./routes/api/roomedit3d');
-
 var app = express();
+//var http = require('http').Server(app);
+var io = require('socket.io');
+var tokenapi = require('./routes/api/token');
+var roomedit3d = require('./routes/api/roomedit3d');
 
 app.use('/', express.static(__dirname + '/www/'));
 app.use(favicon(__dirname + '/www/img/favicon.ico'));
@@ -30,23 +31,31 @@ lmv.initialize().then(
   }
 );
 
-app.use('/api/roomedit3d', roomedit3dapi());
-
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(
   app.get( 'port' ),
   function() {
     var a = server.address().port;
+
     console.log(
       'Roomedit3d server ' + pkg.version
       + ' listening at port ' + a + '.'
     );
+
+    //var socketSvc = new SocketSvc(server);
+    //app.use('/api/roomedit3d', roomedit3d(socketSvc));
+
+    var io2 = io(server);
+
+    io2.on('connection', function(client){
+      console.log('a client connected to the roomedit3d socket');
+    });
+
+    app.use('/api/roomedit3d', roomedit3d(io2));
+
+    //socket.on('connection', function (client) {
+    //  client.emit('roomedit3d', { hello: 'world' });
+    //});
   }
 );
-
-var io = require('socket.io')(server);
-
-io.on('connection', function (socket) {
-  socket.emit('roomedit3d', { hello: 'world' });
-});
