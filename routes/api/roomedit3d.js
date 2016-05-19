@@ -12,10 +12,7 @@ module.exports = function(io) {
       //req.body.externalId; // external id == Revit UniqueId
       //req.body.offset; // THREE.Vector3 offset x y z
 
-      io.sockets.emit({
-        msgId : 'transform',
-        data : req.body
-      });
+      io.sockets.emit('transform', req.body);
 
       return res.send();
     });
