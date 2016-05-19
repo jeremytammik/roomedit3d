@@ -13,8 +13,8 @@ module.exports = function(io) {
       //req.body.offset; // THREE.Vector3 offset x y z
 
       io.sockets.emit({
-        msgId:'transform',
-        data: req.body
+        msgId : 'transform',
+        data : req.body
       });
 
       return res.send();
