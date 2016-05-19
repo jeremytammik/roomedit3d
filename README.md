@@ -26,7 +26,8 @@ This sample demonstrates two interesting aspects:
 
 ## <a name="2"></a>Interactive Model Modification in the View and Data API Viewer
 
-The [Roomedit3dTranslationTool]() implements a View and Data API viewer extension that enables the user to select a component and interactively move it around on the screen, defining a translation to be applied to it and communicated back to the source CAD model.
+The [Roomedit3dTranslationTool](https://github.com/jeremytammik/roomedit3d/blob/master/www/js/extensions/Roomedit3dTranslationTool.js) implements
+a View and Data API viewer extension that enables the user to select a component and interactively move it around on the screen, defining a translation to be applied to it and communicated back to the source CAD model.
 
 
 ## <a name="3"></a>Communication Path Back from Viewer Client to Node.js Web Server to Desktop BIM
@@ -39,9 +40,9 @@ This sample demonstrates an interactive modification of the three.js graphics pr
 
 In this case, the source desktop CAD model is a Revit BIM, and the modifications applied are furniture family instance translations.
 
-The viewer client in the browser uses [fetch]() to implement a REST API POST call back to the node.js server.
+The viewer client in the browser uses [fetch](https://github.com/github/fetch) to implement a REST API POST call back to the node.js server.
 
-The node.js server uses a [socket.io]() broadcast to notify the desktop of the changes.
+The node.js server uses a [socket.io](http://socket.io) broadcast to notify the desktop of the changes.
 
 A dedicated C# .NET Revit add-in subscribes to the socket.io channel, retrieves the updating data and raises an external event to obtain a valid Revit API context and apply it to the BIM.
 
