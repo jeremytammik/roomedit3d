@@ -14,7 +14,7 @@ The updated elements and their new locations are transferred to the [node.js](ht
 
 The server uses [socket.io](http://socket.io) to broadcast the updates.
 
-This broadcast is picked up by a yet-to-be-implemented C# .NET Revit add-in client.
+This broadcast is picked up by the [Roomedit3dApp](https://github.com/jeremytammik/Roomedit3dApp) C# .NET Revit add-in client.
 
 Currently hardwired for a specific model; the selected element is identified via its Revit UniqueId.
 
