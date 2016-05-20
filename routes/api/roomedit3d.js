@@ -4,25 +4,25 @@ var express = require('express');
 
 module.exports = function(io) {
 
-    var router = express.Router();
+  var router = express.Router();
 
-    router.post('/transform', function (req, res) {
-      console.log(req.body);
+  router.post('/transform', function (req, res) {
+    console.log(req.body);
 
-      //req.body.externalId; // external id == Revit UniqueId
-      //req.body.offset; // THREE.Vector3 offset x y z
+    //req.body.externalId; // external id == Revit UniqueId
+    //req.body.offset; // THREE.Vector3 offset x y z
 
-      io.sockets.emit('transform', req.body);
+    io.sockets.emit('transform', req.body);
 
-      return res.send();
-    });
+    return res.send();
+  });
 
-    // implement a GET for the current transform?
-    // no, use a socket connection instead.
-    //router.get('/transform', function (req, res) {
-    //});
+  // implement a GET for the current transform?
+  // no, use a socket connection instead.
+  //router.get('/transform', function (req, res) {
+  //});
 
-    return router;
+  return router;
 }
 
 // in the browser, the extension calls POST server/api/roomedit3d/transform
