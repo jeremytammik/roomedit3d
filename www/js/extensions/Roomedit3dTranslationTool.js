@@ -90,7 +90,6 @@ Roomedit3dTranslationTool = function (viewer, options) {
 
       if(dbId) {
         viewer.getProperties(dbId, function(result){
-          //console.log(result);
           _externalId = result.externalId;
         });
       }
