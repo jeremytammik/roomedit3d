@@ -1,7 +1,7 @@
+// roomedit3d/www/js/roomedit3dapiclient.js
 
 var Roomedit3dApiClient = function(args) {
 
-  //var _apiUrl = args.baseUrl + ':' + args.port;
   var _apiUrl = args.baseUrl;
 
   this.postTransform = function(data) {
