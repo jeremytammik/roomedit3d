@@ -23,6 +23,8 @@ This sample demonstrates two interesting aspects:
 - [Interactive model modification in the View and Data API viewer](#2)
 - [Communication path back from viewer client to node.js web server to desktop BIM](#3)
 
+See below for further pointers to [more detailed documentation](#4).
+
 
 ## <a name="2"></a>Interactive Model Modification in the View and Data API Viewer
 
@@ -45,6 +47,31 @@ The viewer client in the browser uses [fetch](https://github.com/github/fetch) t
 The node.js server uses a [socket.io](http://socket.io) broadcast to notify the desktop of the changes.
 
 The dedicated C# .NET Revit add-in [Roomedit3dApp]() subscribes to the socket.io channel, retrieves the updating data and raises an external event to obtain a valid Revit API context and apply it to the BIM.
+
+
+## <a name="4"></a>Detailed Documentation on the Blogs
+
+The full detailed project documentation with detailed implementation description is provided
+by [The 3D Web Coder](http://the3dwebcoder.typepad.com)
+and [The Building Coder](http://thebuildingcoder.typepad.com).
+
+The 3D Web Coder discusses the Revit-independent aspects in the article on
+the [Roomedit3d viewer extension, POST and socket.io](http://the3dwebcoder.typepad.com/blog/2016/05/roomedit3d-viewer-translation-extension-post-and-socket.html),
+which also points to
+a [six-minute demo recording](https://youtu.be/5IBd-L3cD3Y) showing:
+
+- View and Data API viewer running locally
+- The viewer extension
+- The viewer echoing the translation data in the JavaScript debugger console
+- The node server logging the POST data received from the viewer when running locally, and forwarding it to the socket.io broadcast
+- The same steps running Heroku-hosted in the cloud
+- The console app connecting to the cloud and logging the translation messages as they are sent and received
+
+The Building Coder summarises the entire state of the project today in the article on
+the [Roomedit3d live real-time socket.io BIM update](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html),
+which also points to
+a [five-minute video recording](https://youtu.be/EbtyAZPX8Bc) showing the system up and running with the live connection from the View and Data API viewer directly into the Revit BIM.
+
 
 
 ## Author
