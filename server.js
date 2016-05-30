@@ -1,4 +1,9 @@
 // roomedit3d/server.js
+//
+// main entry point for the roomedit3d real-time BIM
+// updater https://github.com/jeremytammik/roomedit3d
+//
+// Copyright 2016 by Jeremy Tammik, Autodesk Inc.
 
 var pkg = require( './package.json' );
 var lmvConfig = require('./config/config-view-and-data');

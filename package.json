@@ -1,7 +1,7 @@
 {
   "name": "roomedit3d",
   "description": "Roomedit3d node.js server and View and Data API client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Developer-Autodesk/view.and.data.api-boilerplate.git"
+    "url": "https://github.com/jeremytammik/roomedit3d"
   }
 }
