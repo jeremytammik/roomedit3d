@@ -44,7 +44,15 @@ The viewer client in the browser uses [fetch](https://github.com/github/fetch) t
 
 The node.js server uses a [socket.io](http://socket.io) broadcast to notify the desktop of the changes.
 
-The dedicated C# .NET Revit add-in [Roomedit3dApp]() subscribes to the socket.io channel, retrieves the updating data and raises an external event to obtain a valid Revit API context and apply it to the BIM.
+The dedicated C# .NET Revit add-in [Roomedit3dApp](https://github.com/jeremytammik/Roomedit3dApp) subscribes to the socket.io channel, retrieves the updating data and raises an external event to obtain a valid Revit API context and apply it to the BIM.
+
+
+## Test
+
+The roomedit3d web server displaying the View and Data API viewer and broadcasting the modified element translations is hosted on Heroku 
+at [roomedit3d.herokuapp.com](http://roomedit3d.herokuapp.com). Look at the model displayed there. You can select and move arbitrary building elements.
+
+If the Roomedit3dApp is up and running in Revit with the same model and subscribed to receiving the broadcast events, it will update the BIM accordingly.
 
 
 ## Author
