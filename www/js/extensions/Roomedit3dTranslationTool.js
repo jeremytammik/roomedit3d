@@ -1,8 +1,10 @@
 // roomedit3d/www/js/extensions/Roomedit3dTranslationTool.js
 //
-// Created in May 2016 by Jeremy Tammik, Autodesk Inc.,
-// based on the Transform Tool viewer extension by 
-// Philippe Leefsma, 
+// Created in May 2016 by Jeremy Tammik, Autodesk Inc.
+//
+// Based on the Transform Tool viewer extension by 
+// Philippe Leefsma:
+//
 // https://github.com/Developer-Autodesk \
 //   /library-javascript-viewer-extensions \
 //   /Autodesk.ADN.Viewing.Extension.TransformTool \
