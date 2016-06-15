@@ -74,12 +74,36 @@ If the Roomedit3dApp is up and running in Revit with the same model and subscrib
 
 ## <a name="7"></a>Setting Up Your Own Model
 
+In a [comment](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html#comment-2714887080)
+on The Building Coder discussion of
+the [Roomedit3d live real-time socket.io BIM update](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html),
+Danny Bentley asked:
 
-## <a name="6"></a>Roomedit3dV2
+> This is very cool.
+> I got everything downloaded and started going through the SocketTest and it worked great.
+> I want to try the Roomedit3dApp, but in my zip file I don't seem to have the .rvt file of the room.
+> Where could I find this file?
 
-The Forge platform has now been redeigned and the View and Data API renamed.
+Answer: You can take any Revit RVT you like.
 
-To be more precise, what we so far considered the View and Data API has now been restructured more cleanly into separate REST API endpoint collections:
+It does not have to have anything to do with rooms at all, really, since any element will be accepted, moved, and the translation communicated back via the socket to the Revit add-in running in the same model.
+
+Translate your RVT for the Forge viewer using your own credentials.
+
+Adapt the roomedit3d viewer server to load it by specifying your own credentials and your translated model URN.
+
+That is all all I can think of.
+
+With that done, you should be ready to go.
+
+Since I provided that answer, however, things have got easier still:
+
+
+## <a name="6"></a>Roomedit3dV2 Using OAuth2 to Edit any Model
+
+The Forge platform has now been redesigned and the View and Data API renamed.
+
+To be more precise, what we so far considered the View and Data API has been restructured more cleanly into separate REST API endpoint collections:
 
 - [Authentication](https://developer.autodesk.com/en/docs/oauth/v2/overview)
 - [Data Management API](https://developer.autodesk.com/en/docs/data/v2/overview)
