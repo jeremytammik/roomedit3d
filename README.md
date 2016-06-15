@@ -76,7 +76,7 @@ If the Roomedit3dApp is up and running in Revit with the same model and subscrib
 
 In a [comment](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html#comment-2714887080)
 on The Building Coder discussion of
-the [Roomedit3d live real-time socket.io BIM update](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html),
+the [roomedit3d live real-time socket.io BIM update](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html),
 Danny Bentley asked:
 
 > This is very cool.
