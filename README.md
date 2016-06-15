@@ -32,14 +32,14 @@ Roomedit3d is a member of the suite of samples connecting the desktop and the cl
 
 Each of the samples consists of a C# .NET Revit API desktop add-in and a web server:
 
-- [RoomEditorApp](https://github.com/jeremytammik/RoomEditorApp) and  the [roomeditdb](https://github.com/jeremytammik/roomedit) CouchDB 
+- [RoomEditorApp](https://github.com/jeremytammik/RoomEditorApp) and  the [roomeditdb](https://github.com/jeremytammik/roomedit) CouchDB
 	database and web server demonstrating real-time round-trip graphical editing of furniture family instance location and rotation plus textual editing of element properties in a simplified 2D representation of the 3D BIM.
 - [FireRatingCloud](https://github.com/jeremytammik/FireRatingCloud) and
-	the [fireratingdb](https://github.com/jeremytammik/firerating) node.js 
+	the [fireratingdb](https://github.com/jeremytammik/firerating) node.js
 	MongoDB web server demonstrating real-time round-trip editing of Revit element shared parameter values.
-- [Roomedit3dApp](https://github.com/jeremytammik/Roomedit3dApp) and 
+- [Roomedit3dApp](https://github.com/jeremytammik/Roomedit3dApp) and
   the [roomedit3d](https://github.com/jeremytammik/roomedit3d) Forge Viewer extension demonstrating translation of furniture family instances in the viewer and updating the Revit BIM in real time via a socket.io broadcast.
-	
+
 
 ## <a name="2"></a>Interactive Model Modification in the View and Data API Viewer
 
@@ -64,12 +64,52 @@ The node.js server uses a [socket.io](http://socket.io) broadcast to notify the 
 The dedicated C# .NET Revit add-in [Roomedit3dApp](https://github.com/jeremytammik/Roomedit3dApp) subscribes to the socket.io channel, retrieves the updating data and raises an external event to obtain a valid Revit API context and apply it to the BIM.
 
 
-## Test
+## <a name="4"></a>Test
 
-The roomedit3d web server displaying the View and Data API viewer and broadcasting the modified element translations is hosted on Heroku 
+The roomedit3d web server displaying the View and Data API viewer and broadcasting the modified element translations is hosted on Heroku
 at [roomedit3d.herokuapp.com](http://roomedit3d.herokuapp.com). Look at the model displayed there. You can select and move arbitrary building elements.
 
 If the Roomedit3dApp is up and running in Revit with the same model and subscribed to receiving the broadcast events, it will update the BIM accordingly.
+
+
+## <a name="7"></a>Setting Up Your Own Model
+
+
+## <a name="6"></a>Roomedit3dV2
+
+The Forge platform has now been redeigned and the View and Data API renamed.
+
+To be more precise, what we so far considered the View and Data API has now been restructured more cleanly into separate REST API endpoint collections:
+
+- [Authentication](https://developer.autodesk.com/en/docs/oauth/v2/overview)
+- [Data Management API](https://developer.autodesk.com/en/docs/data/v2/overview)
+- [Model Derivative API](https://developer.autodesk.com/en/docs/model-derivative/v2/overview)
+- [Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview)
+
+I implemented a new version of Roomedit3d adapted to fit into that structure:
+[Roomedit3dV2](https://github.com/jeremytammik/model.derivative.api-nodejs-sample-roomedit3d).
+
+You can test it live
+at [roomedit3dv2.herokuapp.com](http://roomedit3dv2.herokuapp.com).
+
+In that version, you can log into
+your [own A360 account](https://myhub.autodesk360.com), obviously exercising
+the [Authentication API](https://developer.autodesk.com/en/docs/oauth/v2/overview).
+
+The sample uses
+the [Data Management API](https://developer.autodesk.com/en/docs/data/v2/overview) to
+list all hubs you have access to and the hierarchy of projects, folders, items and versions within them.
+
+When you select a specific version,
+the [Model Derivative API](https://developer.autodesk.com/en/docs/model-derivative/v2/overview) provides
+access to the internal CAD seed file structure, translates it for the viewer, and enables geometry export of selected elements.
+
+Within the viewer, the `Roomedit3dTranslationTool` can be turned on an behaves just as before:
+
+- Select an element
+- Transform its location
+- Report the data back from the viewer to the web server via a REST API call
+- Broadcast the data from the web server to the C# .NET clients to update the BIM
 
 
 ## <a name="4"></a>Detailed Documentation on the Blogs
