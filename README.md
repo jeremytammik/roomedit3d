@@ -97,7 +97,7 @@ Danny Bentley asked:
 > I want to try the Roomedit3dApp, but in my zip file I don't seem to have the .rvt file of the room.
 > Where could I find this file?
 
-Answer: You can take any Revit RVT you like.
+Answer: You can use any Revit BIM RVT project file you like.
 
 It does not have to have anything to do with rooms at all, really, since any element will be accepted, moved, and the translation communicated back via the socket to the Revit add-in running in the same model.
 
