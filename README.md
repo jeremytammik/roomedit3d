@@ -25,8 +25,21 @@ This sample demonstrates two interesting aspects:
 
 See below for further pointers to [more detailed documentation](#4).
 
+Now that this text is growing even more, here is a full table of contents:
 
-## Connecting desktop and cloud
+- [Connecting desktop and cloud](#1)
+- [Interactive Model Modification in the View and Data API Viewer](#2)
+- [Communication Path Back from Viewer Client to Node.js Web Server to Desktop BIM](#3)
+- [Test](#4)
+- [Setting Up Your Own Model](#5)
+- [Roomedit3dV2 Using OAuth2 to Edit any Model](#6)
+- [Detailed Documentation on the Blogs](#7)
+- [Author](#98)
+- [License](#99)
+
+
+
+## <a name="1"></a>Connecting desktop and cloud
 
 Roomedit3d is a member of the suite of samples connecting the desktop and the cloud.
 
@@ -72,7 +85,7 @@ at [roomedit3d.herokuapp.com](http://roomedit3d.herokuapp.com). Look at the mode
 If the Roomedit3dApp is up and running in Revit with the same model and subscribed to receiving the broadcast events, it will update the BIM accordingly.
 
 
-## <a name="7"></a>Setting Up Your Own Model
+## <a name="5"></a>Setting Up Your Own Model
 
 In a [comment](http://thebuildingcoder.typepad.com/blog/2016/05/roomedit3d-live-real-time-bim-update-recording.html#comment-2714887080)
 on The Building Coder discussion of
@@ -136,7 +149,7 @@ Within the viewer, the `Roomedit3dTranslationTool` can be turned on an behaves j
 - Broadcast the data from the web server to the C# .NET clients to update the BIM
 
 
-## <a name="4"></a>Detailed Documentation on the Blogs
+## <a name="7"></a>Detailed Documentation on the Blogs
 
 The full detailed project documentation with detailed implementation description is provided
 by [The 3D Web Coder](http://the3dwebcoder.typepad.com)
@@ -161,7 +174,7 @@ a [five-minute video recording](https://youtu.be/EbtyAZPX8Bc) showing the system
 
 
 
-## Author
+## <a name="98"></a>Author
 
 - [Philippe Leefsma](http://adndevblog.typepad.com/cloud_and_mobile/philippe-leefsma.html), Autodesk Developer Network.
 - Jeremy Tammik,
@@ -172,7 +185,7 @@ a [five-minute video recording](https://youtu.be/EbtyAZPX8Bc) showing the system
 [Autodesk Inc.](http://www.autodesk.com)
 
 
-## License
+## <a name="99"></a>License
 
 This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 Please see the [LICENSE](LICENSE) file for full details.
