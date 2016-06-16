@@ -62,6 +62,8 @@ a View and Data API viewer extension that enables the user to select a component
 
 ## <a name="3"></a>Communication Path Back from Viewer Client to Node.js Web Server to Desktop BIM
 
+![Roomedit3d architecture](img/roomedit3d_architecture.png "Roomedit3d architecture")
+
 The View and Data API provides view functionality only, no edit.
 
 The pre-defined communication path goes from the desktop to the cloud, from the source CAD model to the translated View and Data API buckets and JSON data bubbles.
