@@ -126,7 +126,7 @@ To be more precise, what we so far considered the View and Data API has been res
 - [Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview)
 
 I implemented a new version of Roomedit3d adapted to fit into that structure:
-[Roomedit3dV2](https://github.com/jeremytammik/model.derivative.api-nodejs-sample-roomedit3d).
+[roomedit3dv2](https://github.com/jeremytammik/model.derivative.api-nodejs-sample-roomedit3d).
 
 You can test it live
 at [roomedit3dv2.herokuapp.com](http://roomedit3dv2.herokuapp.com).
