@@ -175,6 +175,22 @@ which also points to
 a [five-minute video recording](https://youtu.be/EbtyAZPX8Bc) showing the system up and running with the live connection from the View and Data API viewer directly into the Revit BIM.
 
 
+## <a name="8"></a>Q &amp; A
+
+**[Q]** I was successful in downloading Geometory Data of Revit Model (following this [tutorial](https://developer.autodesk.com/en/docs/model-derivative/v2/tutorials/extract-geometry-from-source-file)).
+
+And I was successful in getting Revit Model Properties ([tutorial](https://developer.autodesk.com/en/docs/model-derivative/v2/tutorials/extract-data-from-source-file)).
+
+But I can not find key for tying geometory with property.
+
+Anyone know key for tying? or Anyone know how to tie both data ?
+
+**[A]** The Revit Element `UniqueId` property is included in the Forge translated result. In the Forge data, it is stored as the `externalId`.
+
+An example of accessing the Forge information in the viewer in order to transmit changes back to the Revit BIM is provided by the [roomedit3d sample](https://github.com/jeremytammik/roomedit3d).
+
+Look at the [Roomedit3dTranslationTool implementation](https://github.com/jeremytammik/roomedit3d/blob/master/www/js/extensions/Roomedit3dTranslationTool.js).
+
 
 ## <a name="98"></a>Author
 
