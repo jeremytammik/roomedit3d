@@ -177,6 +177,8 @@ a [five-minute video recording](https://youtu.be/EbtyAZPX8Bc) showing the system
 
 ## <a name="8"></a>Q &amp; A
 
+### 1. [Autodesk Forge Model Derivative API &ndash; how to tie Forge geometry in OBJ File with Revit BIM property](http://stackoverflow.com/questions/39482709/autodesk-forge-model-derivative-api-how-to-tying-geometory-in-obj-file-with-pro/39488121#39488121)
+
 **[Q]** I was successful in downloading Geometory Data of Revit Model (following this [tutorial](https://developer.autodesk.com/en/docs/model-derivative/v2/tutorials/extract-geometry-from-source-file)).
 
 And I was successful in getting Revit Model Properties ([tutorial](https://developer.autodesk.com/en/docs/model-derivative/v2/tutorials/extract-data-from-source-file)).
