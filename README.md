@@ -39,7 +39,7 @@ Now that this text is growing even more, here is a full table of contents:
 
 
 
-## <a name="1"></a>Connecting desktop and cloud
+## <a name="1"></a>Connecting Desktop and Cloud
 
 Roomedit3d is a member of the suite of samples connecting the desktop and the cloud.
 
