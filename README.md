@@ -194,7 +194,7 @@ An example of accessing the Forge information in the viewer in order to transmit
 Look at the [Roomedit3dTranslationTool implementation](https://github.com/jeremytammik/roomedit3d/blob/master/www/js/extensions/Roomedit3dTranslationTool.js).
 
 
-## <a name="98"></a>Author
+## <a name="98"></a>Authors
 
 - [Philippe Leefsma](http://adndevblog.typepad.com/cloud_and_mobile/philippe-leefsma.html), Autodesk Developer Network.
 - Jeremy Tammik,
